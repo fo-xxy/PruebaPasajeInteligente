@@ -64,9 +64,8 @@ namespace PasajeInteligenteWinForms
 
         //Se cargan los datos al iniciar el formulario
         private async void FormCompanyList_Load(object sender, EventArgs e)
-        {
-            
-            await _presenter.LoadCompaniesAsync(); 
+        { 
+            await _presenter.LoadCompaniesAsync();
         }
 
         //Configuración del DataGridView
@@ -84,12 +83,8 @@ namespace PasajeInteligenteWinForms
                 dataGridView1.Columns.Insert(0, checkColumn);
             }
 
-
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
+            dataGridView1.AutoResizeColumns();
         }
 
 

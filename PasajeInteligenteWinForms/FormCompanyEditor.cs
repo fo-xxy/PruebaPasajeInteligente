@@ -27,14 +27,14 @@ namespace PasajeInteligenteWinForms
 
             if (company != null)
             {
-                lblMessage.Text = "Se está editando la empresa: " + company.Nombre;
+                lblMessage.Text = "Editando Empresa";
                 _companyToEdit = company;
 
                 LoadCompanyData();
             }
             else
             {
-                lblMessage.Text = "Se está creando una nueva empresa";
+                lblMessage.Text = "Creando nueva Empresa";
 
             }
         }
@@ -83,16 +83,23 @@ namespace PasajeInteligenteWinForms
         //Método para crear o actualizar una empresa
         private async void createCompany()
         {
-            if (_companyToEdit != null)
+            if (ValidateInput() == true )
             {
-                this._presenter.UpdateCompanyAsync();
+                if (_companyToEdit != null)
+                {
+                    if (ValidateInput() == true) { }
+                    await this._presenter.UpdateCompanyAsync();
+                    
+                    this.Close();
+                }
+                else
+                { 
+                    await this._presenter.AddCompanyAsync();
 
-            }
-            else
-            {
-                this._presenter.AddCompanyAsync();
+                    this.Close();
 
-            }
+                }
+            }  
         }
 
         //Boton para crear o actualizar una empresa
@@ -104,6 +111,71 @@ namespace PasajeInteligenteWinForms
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private bool ValidateInput()
+        {
+            if (txtName.Text == string.Empty)
+            {
+                MessageBox.Show("El nombre es obligatorio.", "Alerta");
+                txtName.Focus();
+                return false;
+            }
+            else if (txtCode.Text == string.Empty)
+            {
+                MessageBox.Show("El código es obligatorio.", "Alerta");
+                txtCode.Focus();
+                return false;
+
+            }
+            else if (txtAddress.Text == string.Empty)
+            {
+                MessageBox.Show("La dirección es obligatoria.", "Alerta");
+                txtAddress.Focus();
+               return false;
+
+            }
+            else if (txtPhone.Text == string.Empty)
+            {
+                MessageBox.Show("El teléfono es obligatorio.", "Alerta");
+                txtPhone.Focus();
+                return false;
+
+            }
+            else if (txtCity.Text == string.Empty)
+            {
+                MessageBox.Show("La ciudad es obligatoria.", "Alerta");
+                txtCity.Focus();
+                return false;
+
+            }
+            else if (txtDepartment.Text == string.Empty)
+            {
+                MessageBox.Show("El departamento es obligatorio.", "Alerta");
+                txtDepartment.Focus();
+                return false;
+
+            }
+            else if (txtCountry.Text == string.Empty)
+            {
+                MessageBox.Show("El país es obligatorio.", "Alerta");
+                txtCountry.Focus();
+                return false;
+
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        //Validacion tipo de dato
+        private void SoloNumeros_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

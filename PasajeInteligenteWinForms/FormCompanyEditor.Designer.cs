@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            label8 = new Label();
+            lblMessage = new Label();
             btnCancel = new Button();
             btnCreate = new Button();
             txtCountry = new TextBox();
@@ -45,12 +47,13 @@
             label3 = new Label();
             label2 = new Label();
             label1 = new Label();
-            lblMessage = new Label();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
+            panel1.BackColor = Color.LightSkyBlue;
+            panel1.Controls.Add(label8);
             panel1.Controls.Add(lblMessage);
             panel1.Controls.Add(btnCancel);
             panel1.Controls.Add(btnCreate);
@@ -71,14 +74,36 @@
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(800, 450);
+            panel1.Size = new Size(909, 450);
             panel1.TabIndex = 0;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Dock = DockStyle.Left;
+            label8.Font = new Font("Segoe UI", 18F);
+            label8.Location = new Point(0, 0);
+            label8.Name = "label8";
+            label8.Size = new Size(201, 32);
+            label8.TabIndex = 17;
+            label8.Text = "Pasaje Inteligente";
+            // 
+            // lblMessage
+            // 
+            lblMessage.Anchor = AnchorStyles.Top;
+            lblMessage.AutoSize = true;
+            lblMessage.Font = new Font("Segoe UI", 15F);
+            lblMessage.Location = new Point(299, 22);
+            lblMessage.Name = "lblMessage";
+            lblMessage.Size = new Size(0, 28);
+            lblMessage.TabIndex = 16;
             // 
             // btnCancel
             // 
-            btnCancel.Location = new Point(591, 187);
+            btnCancel.Font = new Font("Segoe UI", 12F);
+            btnCancel.Location = new Point(629, 183);
             btnCancel.Name = "btnCancel";
-            btnCancel.Size = new Size(75, 23);
+            btnCancel.Size = new Size(90, 30);
             btnCancel.TabIndex = 15;
             btnCancel.Text = "Cancelar";
             btnCancel.UseVisualStyleBackColor = true;
@@ -86,9 +111,10 @@
             // 
             // btnCreate
             // 
-            btnCreate.Location = new Point(591, 132);
+            btnCreate.Font = new Font("Segoe UI", 12F);
+            btnCreate.Location = new Point(629, 116);
             btnCreate.Name = "btnCreate";
-            btnCreate.Size = new Size(75, 23);
+            btnCreate.Size = new Size(90, 30);
             btnCreate.TabIndex = 14;
             btnCreate.Text = "Agregar";
             btnCreate.UseVisualStyleBackColor = true;
@@ -96,130 +122,140 @@
             // 
             // txtCountry
             // 
-            txtCountry.Location = new Point(307, 245);
+            txtCountry.Font = new Font("Segoe UI", 12F);
+            txtCountry.Location = new Point(353, 265);
             txtCountry.Name = "txtCountry";
-            txtCountry.Size = new Size(100, 23);
+            txtCountry.Size = new Size(173, 29);
             txtCountry.TabIndex = 13;
             // 
             // txtDepartment
             // 
-            txtDepartment.Location = new Point(307, 175);
+            txtDepartment.Font = new Font("Segoe UI", 12F);
+            txtDepartment.Location = new Point(353, 185);
             txtDepartment.Name = "txtDepartment";
-            txtDepartment.Size = new Size(100, 23);
+            txtDepartment.Size = new Size(173, 29);
             txtDepartment.TabIndex = 12;
             // 
             // txtCity
             // 
-            txtCity.Location = new Point(307, 95);
+            txtCity.Font = new Font("Segoe UI", 12F);
+            txtCity.Location = new Point(353, 116);
             txtCity.Name = "txtCity";
-            txtCity.Size = new Size(100, 23);
+            txtCity.Size = new Size(173, 29);
             txtCity.TabIndex = 11;
             // 
             // txtPhone
             // 
-            txtPhone.Location = new Point(43, 309);
+            txtPhone.Font = new Font("Segoe UI", 12F);
+            txtPhone.Location = new Point(42, 335);
             txtPhone.Name = "txtPhone";
-            txtPhone.Size = new Size(100, 23);
+            txtPhone.Size = new Size(173, 29);
             txtPhone.TabIndex = 10;
+            txtPhone.KeyPress += SoloNumeros_KeyPress;
             // 
             // txtAddress
             // 
-            txtAddress.Location = new Point(43, 239);
+            txtAddress.Font = new Font("Segoe UI", 12F);
+            txtAddress.Location = new Point(42, 265);
             txtAddress.Name = "txtAddress";
-            txtAddress.Size = new Size(100, 23);
+            txtAddress.Size = new Size(231, 29);
             txtAddress.TabIndex = 9;
             // 
             // txtCode
             // 
-            txtCode.Location = new Point(43, 159);
+            txtCode.Font = new Font("Segoe UI", 12F);
+            txtCode.Location = new Point(42, 185);
             txtCode.Name = "txtCode";
-            txtCode.Size = new Size(100, 23);
+            txtCode.Size = new Size(173, 29);
             txtCode.TabIndex = 8;
+            txtCode.KeyPress += SoloNumeros_KeyPress;
             // 
             // txtName
             // 
-            txtName.Location = new Point(43, 90);
+            txtName.Font = new Font("Segoe UI", 12F);
+            txtName.Location = new Point(42, 116);
             txtName.Name = "txtName";
-            txtName.Size = new Size(176, 23);
+            txtName.Size = new Size(231, 29);
             txtName.TabIndex = 7;
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(307, 219);
+            label7.Font = new Font("Segoe UI", 12F);
+            label7.Location = new Point(353, 241);
             label7.Name = "label7";
-            label7.Size = new Size(31, 15);
+            label7.Size = new Size(40, 21);
             label7.TabIndex = 6;
             label7.Text = "País:";
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(307, 141);
+            label6.Font = new Font("Segoe UI", 12F);
+            label6.Location = new Point(353, 161);
             label6.Name = "label6";
-            label6.Size = new Size(86, 15);
+            label6.Size = new Size(113, 21);
             label6.TabIndex = 5;
             label6.Text = "Departamento:";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(307, 72);
+            label5.Font = new Font("Segoe UI", 12F);
+            label5.Location = new Point(353, 92);
             label5.Name = "label5";
-            label5.Size = new Size(48, 15);
+            label5.Size = new Size(62, 21);
             label5.TabIndex = 4;
             label5.Text = "Ciudad:";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(43, 283);
+            label4.Font = new Font("Segoe UI", 12F);
+            label4.Location = new Point(42, 311);
             label4.Name = "label4";
-            label4.Size = new Size(56, 15);
+            label4.Size = new Size(71, 21);
             label4.TabIndex = 3;
             label4.Text = "Teléfono:";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(43, 205);
+            label3.Font = new Font("Segoe UI", 12F);
+            label3.Location = new Point(42, 241);
             label3.Name = "label3";
-            label3.Size = new Size(60, 15);
+            label3.Size = new Size(78, 21);
             label3.TabIndex = 2;
             label3.Text = "Dirección:";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(43, 136);
+            label2.Font = new Font("Segoe UI", 12F);
+            label2.Location = new Point(42, 161);
             label2.Name = "label2";
-            label2.Size = new Size(49, 15);
+            label2.Size = new Size(63, 21);
             label2.TabIndex = 1;
             label2.Text = "Código:";
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(43, 72);
+            label1.Font = new Font("Segoe UI", 12F);
+            label1.Location = new Point(42, 92);
             label1.Name = "label1";
-            label1.Size = new Size(54, 15);
+            label1.Size = new Size(71, 21);
             label1.TabIndex = 0;
             label1.Text = "Nombre:";
-            // 
-            // lblMessage
-            // 
-            lblMessage.AutoSize = true;
-            lblMessage.Location = new Point(353, 23);
-            lblMessage.Name = "lblMessage";
-            lblMessage.Size = new Size(0, 15);
-            lblMessage.TabIndex = 16;
             // 
             // FormCompanyEditor
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            ClientSize = new Size(909, 450);
             Controls.Add(panel1);
+            MaximizeBox = false;
             Name = "FormCompanyEditor";
             Text = "FormCompanyEditor";
             panel1.ResumeLayout(false);
@@ -247,5 +283,6 @@
         private Button btnCancel;
         private Button btnCreate;
         private Label lblMessage;
+        private Label label8;
     }
 }
